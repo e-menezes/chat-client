@@ -122,8 +122,8 @@ public class ClientForm extends javax.swing.JFrame {
                     JSONArray msgs = obj.getJSONArray("data");
                     for(int i=0; i< msgs.size(); i++) {
                         JSONObject msg = msgs.getJSONObject(i);
-                        msgDisplay.append(msg.getString("origem") + " : ");
-                        msgDisplay.append(msg.optString("msg", "NO DATA") + System.lineSeparator());
+                        msgDisplay.append(msg.getString("src") + " : ");
+                        msgDisplay.append(msg.optString("data", "NO DATA") + System.lineSeparator());
                     }
                 }
                 break;
@@ -148,12 +148,12 @@ public class ClientForm extends javax.swing.JFrame {
                 if (data != null)
                     for (int i=0; i<data.size(); i++){
                         JSONObject o = data.getJSONObject(i);
-                        String origem = o.getString("origem");
-                        if( origem.matches("0") )
+                        String src = o.getString("src");
+                        if( src.matches("0") )
                             msgDisplay.append("Server: ");
                         else
-                            msgDisplay.append(origem);
-                        msgDisplay.append( o.getString("msg") + System.lineSeparator() );
+                            msgDisplay.append(src + ": ");
+                        msgDisplay.append( o.getString("data") + System.lineSeparator() );
                     }
                     
                 
